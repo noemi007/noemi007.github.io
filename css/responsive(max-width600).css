@@ -1,0 +1,127 @@
+@media screen and (max-width:600px) {
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: auto;
+  margin: 0 auto;
+}
+  
+  
+  /* ******************
+header
+****************** */
+header .logo img {
+  width: 40px;
+  height: 40px;
+}
+
+/* ******************
+mainvisual
+****************** */
+#mainvisual {
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+
+}
+
+#mainvisual .mainvisual-text {
+  width: 100%;
+  grid-column: 1/3;
+}
+
+#mainvisual .site-title{
+  width: 100%;
+  text-align: center;
+}
+
+#mainvisual .mainvisual-img {
+  width: 100%;
+  height: 100%;
+}
+
+#mainvisual .btns {
+  flex-direction: column;
+}
+
+
+/* ******************
+about
+****************** */
+#about .about-container {
+  flex-direction: column;
+}
+
+#about .flex-item {
+  width: 100%;
+}
+
+/* ******************
+function
+****************** */
+#function .function-container {
+  width: 100%;
+}
+
+#function .function-item {
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+#function .reverse {
+  flex-direction: column-reverse;
+}
+
+#function .function-desc {
+  width: 100%;
+}
+
+#function .function-img {
+  width: 100%;
+}
+
+#function .grid {
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  padding-top: 16px;
+}
+
+#function .big-grid {
+  grid-column: 1/3;
+}
+
+/* ******************
+steps
+****************** */
+
+#steps {
+  width: 100%;
+  height: 1200px;
+}
+
+#steps .steps-container {
+  width: 80%;
+  height: 800px;
+  margin: 16px auto;
+  overflow: hidden;
+  position: relative;
+  outline: 8px solid red;
+}
+
+#steps ul li {
+  height: 100%;
+  min-width: 100%;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+#steps .steps-image {
+  width: 100%;
+}
+
+
+
+}
