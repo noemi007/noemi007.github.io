@@ -247,7 +247,6 @@ steps
   margin: 16px auto;
   overflow: hidden;
   position: relative;
-  outline: 8px solid red;
 }
 
 #steps ul {

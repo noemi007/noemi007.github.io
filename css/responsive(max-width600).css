@@ -104,11 +104,11 @@ steps
 
 #steps .steps-container {
   width: 80%;
-  height: 800px;
+  height: 1200px;
   margin: 16px auto;
   overflow: hidden;
   position: relative;
-  outline: 8px solid red;
+
 }
 
 #steps ul li {
