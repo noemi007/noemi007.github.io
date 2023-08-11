@@ -1,40 +1,59 @@
-'use strict';
-
-{
-  const next = document.getElementById('next');
-  const prev = document.getElementById('prev');
-  const ul = document.querySelector('ul');
-  const slides = ul.children;
-  let currentIndex = 0;
-
-  function updateButtons() {
-    prev.classList.remove('hidden');
-    next.classList.remove('hidden');
-
-    if (currentIndex === 0) {
-      prev.classList.add('hidden');
-    }
-    if (currentIndex === slides.length - 1) {
-      next.classList.add('hidden');
-    }
-  }
-
-  function moveSlides() {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    ul.style.transform = `translateX(${-1*slideWidth*currentIndex}px)`;
-  }
-
-  updateButtons();
-
-  next.addEventListener('click', () => {
-    currentIndex++;
-    updateButtons();
-    moveSlides();
+$(function(){
+  /*=================================================
+  ハンバーガ―メニュー
+  ===================================================*/
+  // ハンバーガーメニューをクリックした時
+  $('.hamburger').on('click', function() {
+    // ハンバーガーメニューの共通処理を呼び出す
+    hamburger();
+  });
+  // メニューのリンクをクリックした時
+  $('#navi a').on('click', function() {
+    // ハンバーガーメニューの共通処理を呼び出す
+    hamburger();
   });
 
-  prev.addEventListener('click', () => {
-    currentIndex--;
-    updateButtons();
-    moveSlides();
+  /*=================================================
+  Inview（画面に表示されたタイミングで処理を実行）
+  ===================================================*/
+  // BBBが選ばれる理由（スライド左）
+  $('.inview-slide-left').on('inview', function(event, isInView, visiblePartX, visiblePartY) {
+    if(isInView){
+      // 要素が表示されたらslide-leftクラスを追加
+      $(this).stop().addClass('slide-left');
+    }
   });
+  // BBBが選ばれる理由（スライド右）
+  $('.inview-slide-right').on('inview', function(event, isInView, visiblePartX, visiblePartY) {
+    if(isInView){
+      // 要素が表示されたらslide-rightクラスを追加
+      $(this).stop().addClass('slide-right');
+    }
+  });
+  // 受講生の声（ふきだし）
+  $('.inview-balloon').on('inview', function(event, isInView, visiblePartX, visiblePartY) {
+    if(isInView){
+      // 要素が表示されたらballoonクラスを追加
+      $(this).stop().addClass('balloon');
+    }
+  });
+});
+
+/*=================================================
+ハンバーガ―メニュー共通処理
+===================================================*/
+// ハンバーガーメニューをクリックした時とメニュー内のリンクをクリックした時の
+// 処理が同じなので処理を共通化する
+function hamburger() {
+  // toggleClassを使用することで、hamburgerクラスにactiveクラスが存在する場合は削除、
+  // 存在しない場合を追加する処理を自動で行ってくれる
+  $('.hamburger').toggleClass('active');
+
+  if ($('.hamburger').hasClass('active')) {
+    // hamburgerクラスにactiveクラスが存在する場合は、naviにもactiveクラスを追加する
+    $('#navi').addClass('active');
+  } else {
+    // hamburgerクラスにactiveクラスが存在しない場合は、naviからactiveクラスを削除する
+    $('#navi').removeClass('active');
+  }
 }
